@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
+
+@layer theme, base, antd, components, utilities;
+
+@import 'tailwindcss';
+
+html {
+    overscroll-behavior: none;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+*:not(input, textarea) {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    word-wrap: break-word;
+    box-sizing: border-box;
+}
+
+button,
+select,
+a {
+    -webkit-touch-callout: none;
+    -webkit-text-size-adjust: none;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+:root {
+}
+
+.ant-menu-light .ant-menu-item-selected {
+    background-color: #fff;
+    color: black; /* цвет текста */
+}
+
+.ant-menu-light .ant-menu-item-selected:hover {
+    background-color: white;
+}
+
+.leaflet-popup.custom-popup .leaflet-popup-content-wrapper {
+    background: #ffffff;
+    box-shadow: none;
+    border: 2px solid #16A34A;
+    border-radius: 13px;
+    padding: 16px;
+    width: 253px;
+}
+
+
+/*Maps styles*/
+.leaflet-popup.custom-popup .leaflet-popup-tip {
+    display: none;
+}
+
+.leaflet-popup.custom-popup .leaflet-popup-content {
+    margin: 0;
+    width: auto;
+    padding: 0;
+}
+
+
+/*Tables color*/
+
+
+.custom-pagination .ant-pagination-item {
+    border-radius: 6px;
+    background-color: #f0f2f5;
+    border: 1px solid #d9d9d9;
+
+}
+
+.custom-pagination .ant-pagination-item-active {
+    background-color: #16A34A;
+    border-color: #16A34A;
+    color: white;
+}
+
+
+/* nth elements */
+
+/* Зебра-стиль */
+.custom-table .ant-table-tbody > tr:nth-child(odd) {
+    background-color: #fafafa;
+}
+
+.custom-table .ant-table-tbody > tr:nth-child(even) {
+    background-color: #16A34A15;
+}
+

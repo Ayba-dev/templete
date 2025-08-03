@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  web_magent:
+    image: web_magent
+    build:
+      context: ./
+    container_name: web_magent
+    environment:
+      - NODE_ENV=${NODE_ENV}

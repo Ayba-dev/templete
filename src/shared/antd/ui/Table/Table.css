@@ -1,0 +1,25 @@
+.myTable .ant-table-thead th,
+.myTable .ant-table-tbody td {
+  border-right: 1px solid var(--color-divider);
+}
+
+.myTable .ant-table-thead th {
+  font-weight: 400;
+}
+
+.myTable .ant-table-tbody tr:nth-child(even) {
+  background-color: var(--color-lightblue);
+}
+
+.myTable .ant-table-content {
+  overflow-y: auto;
+}
+
+.myTable .ant-table-pagination {
+  align-items: center;
+  margin: 24px 16px;
+}
+
+.myTable .ant-pagination-options {
+  margin-left: auto;
+}

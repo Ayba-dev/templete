@@ -1,0 +1,48 @@
+stages:
+  - build
+  - deploy
+
+variables:
+  IMAGE_TAG: $CI_REGISTRY_IMAGE:$CI_COMMIT_REF_SLUG-$CI_COMMIT_SHORT_SHA
+
+build:
+  stage: build
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker build -t $IMAGE_TAG .
+    - docker push $IMAGE_TAG
+  only:
+    - main
+    - dev
+
+# deploy:master:
+#   stage: deploy
+#   only:
+#     - main
+#   needs:
+#     - build
+#   before_script:
+#     - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+#   script:
+#     - docker pull $IMAGE_TAG
+#     - docker stop new_magent || true && docker rm new_magent || true
+#     - docker run -d --name new_magent -p 8012:80 --restart always $IMAGE_TAG
+#   tags:
+#     - prod
+
+deploy:develop:
+  stage: deploy
+  only:
+    - dev
+  needs:
+    - build
+  before_script:
+    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD $CI_REGISTRY
+  script:
+    - docker pull $IMAGE_TAG
+    - docker stop web_magent || true && docker rm web_magent || true
+    - docker stop new_magent || true && docker rm new_magent || true
+    - docker run -d --name new_magent -p 8012:80 --restart always $IMAGE_TAG
+  tags:
+    - dev
